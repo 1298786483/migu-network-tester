@@ -143,25 +143,25 @@ class MiguNetworkTester:
         print(f"平均速度: {self.format_bytes(self.total_bytes / elapsed)}/s")
         print(f"{'='*60}\n")
 
-def main():
-    parser = argparse.ArgumentParser(description='咪咕视频网络测试工具')
-    parser.add_argument('-t', '--threads', type=int, default=1, help='并发线程数 (默认: 1)')
-    parser.add_argument('-i', '--interval', type=float, default=0, help='请求间隔秒数 (默认: 0)')
-    parser.add_argument('-d', '--duration', type=int, default=0, help='测试时长秒数 (默认: 0 无限制)')
-    
-    args = parser.parse_args()
-    
-    if args.threads < 1:
-        print("错误: 线程数必须大于0")
-        sys.exit(1)
-    
-    tester = MiguNetworkTester(
-        threads=args.threads,
-        interval=args.interval,
-        duration=args.duration
-    )
-    
-    tester.start()
+    def main():
+        parser = argparse.ArgumentParser(description='咪咕视频网络测试工具')
+        parser.add_argument('-t', '--threads', type=int, default=1, help='并发线程数 (默认: 1)')
+        parser.add_argument('-i', '--interval', type=float, default=0, help='请求间隔秒数 (默认: 0)')
+        parser.add_argument('-d', '--duration', type=int, default=0, help='测试时长秒数 (默认: 0 无限制)')
+        
+        args = parser.parse_args()
+        
+        if args.threads < 1:
+            print("错误: 线程数必须大于0")
+            sys.exit(1)
+        
+        tester = MiguNetworkTester(
+            threads=args.threads,
+            interval=args.interval,
+            duration=args.duration
+        )
+        
+        tester.start()
 
-if __name__ == '__main__':
-    main()
+    if __name__ == '__main__':
+        main()
